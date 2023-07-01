@@ -11,6 +11,25 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
 
 
     @Test
+    public void inserirObjetoComMerge(){
+        Produto produto = new Produto();
+
+        produto.setId(4);
+        produto.setNome("Ikki");
+        produto.setDescricao("Avê Fenix!");
+        produto.setPreco(new BigDecimal(12000));
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(produto);
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Assert.assertNotNull(produtoVerificacao);
+    }
+
+    @Test
     public void atualizarObjetoGerenciado(){
         Produto produto = entityManager.find(Produto.class, 1);
 
