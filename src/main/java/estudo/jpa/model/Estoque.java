@@ -15,13 +15,7 @@ public class Estoque {
 
     @EqualsAndHashCode.Include
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "tabela")
-    @TableGenerator(name = "tabela", table = "hebernate_seequences",
-                    pkColumnName = "sequence_name",
-                    pkColumnValue = "estoque",
-                    valueColumnName = "next_val",
-                    initialValue = 0,
-                    allocationSize = 50)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "produto_id")

@@ -29,7 +29,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
 
         Produto produtoPersist = new Produto();
 
-        produtoPersist.setId(5);
+        //produtoPersist.setId(5);
         produtoPersist.setNome("Shun");
         produtoPersist.setDescricao("Corrente de Andrômeda!");
         produtoPersist.setPreco(new BigDecimal(13000));
@@ -48,7 +48,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
 
         Produto produtoMerge = new Produto();
 
-        produtoMerge.setId(6);
+        //produtoMerge.setId(6);
         produtoMerge.setNome("Shiryu");
         produtoMerge.setDescricao("Cólera do Dragão!");
         produtoMerge.setPreco(new BigDecimal(14000));
@@ -69,18 +69,18 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
     public void inserirObjetoComMerge(){
         Produto produto = new Produto();
 
-        produto.setId(4);
+        //produto.setId(4);
         produto.setNome("Ikki");
         produto.setDescricao("Avê Fenix!");
         produto.setPreco(new BigDecimal(12000));
 
         entityManager.getTransaction().begin();
-        entityManager.merge(produto);
+        Produto produtoSalvo = entityManager.merge(produto);
         entityManager.getTransaction().commit();
 
         entityManager.clear();
 
-        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Produto produtoVerificacao = entityManager.find(Produto.class, produtoSalvo.getId());
         Assert.assertNotNull(produtoVerificacao);
     }
 
@@ -101,18 +101,18 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
     public void atualizarObjeto(){
         Produto produto = new Produto();
 
-        produto.setId(1);
+        //produto.setId(1);
         produto.setNome("Kindle Paperwhite");
         produto.setDescricao("Novo Kindle!");
         produto.setPreco(new BigDecimal(599));
 
         entityManager.getTransaction().begin();
-        entityManager.merge(produto);
+        Produto produtoSalvo = entityManager.merge(produto);
         entityManager.getTransaction().commit();
 
         entityManager.clear();
 
-        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Produto produtoVerificacao = entityManager.find(Produto.class, produtoSalvo.getId());
         Assert.assertNotNull(produtoVerificacao);
         Assert.assertEquals("Kindle Paperwhite", produtoVerificacao.getNome());
     }
@@ -133,7 +133,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
     public void inserirOPrimeiroObjeto(){
         Produto produto = new Produto();
 
-        produto.setId(2);
+        //produto.setId(2);
         produto.setNome("Cavaleiro de ouro");
         produto.setDescricao("Guardiões das doze casas");
         produto.setPreco(new BigDecimal(8001));
