@@ -17,6 +17,7 @@ public class Pedido {
 
     @EqualsAndHashCode.Include
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "data_pedido")
@@ -30,6 +31,7 @@ public class Pedido {
 
     private BigDecimal total;
 
+    @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
     @Embedded
