@@ -20,14 +20,17 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne
+    private Cliente cliente;
+
     @Column(name = "data_pedido")
     private LocalDateTime dataPedido;
 
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
 
-    @Column(name = "nota_fiscal")
-    private Integer notaFiscal;
+    @Column(name = "nota_fiscal_id")
+    private Integer notaFiscalId;
 
     private BigDecimal total;
 
