@@ -20,6 +20,7 @@ public class ItemPedido {
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
     @ManyToOne
