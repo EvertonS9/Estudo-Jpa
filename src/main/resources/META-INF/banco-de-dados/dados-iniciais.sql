@@ -6,3 +6,5 @@ insert into cliente (id, nome) values (1, 'RotaZ');
 insert into pedido(id, cliente_id, data_pedido, total, status) values (1, 1, sysdate(), 1000, 'AGUARDANDO');
 
 insert into item_Pedido(id, pedido_id, produto_id, preco_produto, quantidade) values (1, 1, 1, 499.0, 2);
+
+insert into categoria (id, nome) values (1, 'Eletrônicos');
