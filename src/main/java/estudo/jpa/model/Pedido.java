@@ -25,11 +25,11 @@ public class Pedido {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @Column(name = "data_pedido")
-    private LocalDateTime dataPedido;
+    @Column(name = "data_criacao", updatable = false)
+    private LocalDateTime dataCriacao;
 
-    @Column(name = "data_conclusao")
-    private LocalDateTime dataConclusao;
+    @Column(name = "data_ultima_atualizacao", insertable = false)
+    private LocalDateTime dataUltimaAtualizacao;
 
     @OneToOne(mappedBy = "pedido")
     private NotaFiscal notaFiscal;
