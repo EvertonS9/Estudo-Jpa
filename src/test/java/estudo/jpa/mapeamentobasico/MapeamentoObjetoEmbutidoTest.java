@@ -1,6 +1,7 @@
 package estudo.jpa.mapeamentobasico;
 
 import estudo.jpa.EntityManagerTest;
+import estudo.jpa.model.Cliente;
 import estudo.jpa.model.EnderecoEntregaPedido;
 import estudo.jpa.model.Pedido;
 import estudo.jpa.model.StatusPedido;
@@ -14,6 +15,8 @@ public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
 
     @Test
     public void analisandoMapeamentoObjetoEmbutido(){
+        Cliente cliente = entityManager.find(Cliente.class, 1);
+
         EnderecoEntregaPedido endereco = new EnderecoEntregaPedido();
         endereco.setCep("00000-00");
         endereco.setLogradouro("Rua dos testes");
@@ -23,11 +26,12 @@ public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
         endereco.setEstado("TEST");
 
         Pedido pedido = new Pedido();
-        pedido.setId(1);
+        //pedido.setId(1);
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(250));
         pedido.setEnderecoEntrega(endereco);
+        pedido.setCliente(cliente);
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);
