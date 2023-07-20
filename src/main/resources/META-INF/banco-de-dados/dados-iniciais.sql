@@ -2,6 +2,7 @@ insert into produto (id, nome, preco, data_criacao, descricao) values (1, 'Kindl
 insert into produto (id, nome, preco, data_criacao, descricao) values (3, 'Hyoga', 5800.0, date_sub(sysdate(), interval 1 day), 'Pó de diamante');
 
 insert into cliente (id, nome) values (1, 'RotaZ');
+insert into cliente (id, nome) values (2, 'Vitoria Ferreira');
 
 insert into pedido(id, cliente_id, data_criacao, total, status) values (1, 1, sysdate(), 1000, 'AGUARDANDO');
 
