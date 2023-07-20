@@ -34,6 +34,7 @@ public class RelacionamentosManyToOneTest extends EntityManagerTest {
     @Test
     public void VerificarRelacionamentoItemPedido(){
         entityManager.getTransaction().begin();
+
         Cliente cliente = entityManager.find(Cliente.class, 1);
         Produto produto = entityManager.find(Produto.class, 1);
 
@@ -43,17 +44,15 @@ public class RelacionamentosManyToOneTest extends EntityManagerTest {
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
 
-        entityManager.persist(pedido);
-
-        entityManager.flush();
 
         ItemPedido itemPedido = new ItemPedido();
-        itemPedido.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
+        itemPedido.setId(new ItemPedidoId());
         itemPedido.setQuantidade(10);
         itemPedido.setPrecoProduto(produto.getPreco());
         itemPedido.setProduto(produto);
         itemPedido.setPedido(pedido);
 
+        entityManager.persist(pedido);
         entityManager.persist(itemPedido);
         entityManager.getTransaction().commit();
 

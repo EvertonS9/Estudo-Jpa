@@ -43,12 +43,10 @@ public class RelacionamentosOneToManyTest extends EntityManagerTest {
 
         pedido.setCliente(cliente);
 
-
-
         ItemPedido itemPedido = new ItemPedido();
+        itemPedido.setId(new ItemPedidoId());
         itemPedido.setQuantidade(10);
         itemPedido.setPrecoProduto(produto.getPreco());
-
         itemPedido.setProduto(produto);
         itemPedido.setPedido(pedido);
 
