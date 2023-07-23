@@ -1,12 +1,15 @@
 package estudo.jpa.mapeamentoavancado;
 
+import com.mysql.cj.xdevapi.Client;
 import estudo.jpa.EntityManagerTest;
 import estudo.jpa.model.Atributo;
+import estudo.jpa.model.Cliente;
 import estudo.jpa.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class ElementCollectionTest extends EntityManagerTest {
 
@@ -39,4 +42,21 @@ public class ElementCollectionTest extends EntityManagerTest {
         Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
         Assert.assertFalse(produtoVerificacao.getAtributos().isEmpty());
     }
+
+    @Test
+    public void applyContact() {
+        entityManager.getTransaction().begin();
+
+        Cliente cliente = entityManager.find(Cliente.class, 1);
+        cliente.setContatos(Collections.singletonMap("email", "vitoria@email.com"));
+
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
+        Assert.assertEquals(
+                "vitoria@email.com", clienteVerificacao.getContatos().get("email"));
+    }
+
 }
