@@ -3,6 +3,7 @@ package estudo.jpa.mapeamentoavancado;
 import estudo.jpa.EntityManagerTest;
 import estudo.jpa.model.NotaFiscal;
 import estudo.jpa.model.Pedido;
+import estudo.jpa.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,17 +17,33 @@ import java.util.Date;
 public class SavingFilesTest extends EntityManagerTest {
 
     @Test
+    public void savePhotoProduct(){
+        entityManager.getTransaction().begin();
+        Produto produto = entityManager.find(Produto.class, 1);
+        produto.setFoto(savePhoto());
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, 1);
+        Assert.assertNotNull(produtoVerificacao.getFoto());
+        Assert.assertTrue(produtoVerificacao.getFoto().length > 0);
+    }
+
+    @Test
     public void saveXmlNote() {
         Pedido pedido = entityManager.find(Pedido.class, 1);
 
         NotaFiscal notaFiscal = new NotaFiscal();
         notaFiscal.setPedido(pedido);
         notaFiscal.setDataEmissao(new Date());
-        notaFiscal.setXml(carregarNotaFiscal());
+        notaFiscal.setXml(loadXmlNote());
 
         entityManager.getTransaction().begin();
         entityManager.persist(notaFiscal);
         entityManager.getTransaction().commit();
+
+        entityManager.clear();
 
         NotaFiscal notaFiscalVerificacao = entityManager.find(NotaFiscal.class, notaFiscal.getId());
         Assert.assertNotNull(notaFiscalVerificacao.getXml());
@@ -44,10 +61,18 @@ public class SavingFilesTest extends EntityManagerTest {
 
     }
 
-    private static byte[] carregarNotaFiscal() {
+    private static byte[] savePhoto(){
+        return loadFile("/hyoga.png");
+    }
+
+    private static byte[] loadXmlNote(){
+        return loadFile("/nota-fiscal.xml");
+    }
+
+    private static byte[] loadFile(String nome) {
         try {
             return SavingFilesTest.class.getResourceAsStream(
-                    "/nota-fiscal.xml").readAllBytes();
+                    nome).readAllBytes();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

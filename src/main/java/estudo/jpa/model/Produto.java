@@ -27,6 +27,9 @@ public class Produto {
     @Column(name = "data_ultima_criacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao;
 
+    @Lob
+    private byte[] foto;
+
     private String nome;
 
     private String descricao;
