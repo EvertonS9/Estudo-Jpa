@@ -19,7 +19,7 @@ public class SavingFilesTest extends EntityManagerTest {
     @Test
     public void savePhotoProduct(){
         entityManager.getTransaction().begin();
-        Produto produto = entityManager.find(Produto.class, 1);
+        Produto produto = entityManager.find(Produto.class, 3);
         produto.setFoto(savePhoto());
         entityManager.getTransaction().commit();
 
