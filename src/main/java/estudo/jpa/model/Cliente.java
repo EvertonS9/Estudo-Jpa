@@ -28,7 +28,7 @@ public class Cliente extends EntidadeBaseInteger{
     private Map<String, String> contatos;
 
     @Transient
-    private String firstName;
+    private String primeiroNome;
 
     @Column(table = "cliente_detalhe")
     @Enumerated(EnumType.STRING)
@@ -41,11 +41,11 @@ public class Cliente extends EntidadeBaseInteger{
     private List<Pedido> pedidos;
 
     @PostLoad
-    public void configurarPrimeiroNome() {
+    public void configurarPrimeiroNome(){
         if (nome != null && !nome.isBlank()) {
             int index = nome.indexOf(" ");
             if (index > -1) {
-                firstName = nome.substring(0, index);
+                primeiroNome = nome.substring(0, index);
             }
         }
     }

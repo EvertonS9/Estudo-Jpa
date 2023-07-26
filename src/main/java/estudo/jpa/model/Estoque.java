@@ -16,5 +16,5 @@ public class Estoque extends EntidadeBaseInteger{
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    private Integer quatidade;
+    private Integer quantidade;
 }

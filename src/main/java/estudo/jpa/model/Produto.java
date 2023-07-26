@@ -1,6 +1,6 @@
 package estudo.jpa.model;
 
-import lombok.EqualsAndHashCode;
+import listener.GenericoListener;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@EntityListeners({ GenericoListener.class })
 @Entity
 @Table(name = "produto")
 public class Produto extends EntidadeBaseInteger{
@@ -18,17 +19,17 @@ public class Produto extends EntidadeBaseInteger{
     @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao;
 
-    @Column(name = "data_ultima_criacao", insertable = false)
+    @Column(name = "data_ultima_atualizacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao;
-
-    @Lob
-    private byte[] foto;
 
     private String nome;
 
     private String descricao;
 
     private BigDecimal preco;
+
+    @Lob
+    private byte[] foto;
 
     @ManyToMany
     @JoinTable(name = "produto_categoria",

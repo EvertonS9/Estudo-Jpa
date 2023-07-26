@@ -16,6 +16,9 @@ public class NotaFiscal extends EntidadeBaseInteger{
     @MapsId
     @OneToOne(optional = false)
     @JoinColumn(name = "pedido_id")
+//    @JoinTable(name = "pedido_nota_fiscal",
+//            joinColumns = @JoinColumn(name = "nota_fiscal_id", unique = true),
+//            inverseJoinColumns = @JoinColumn(name = "pedido_id", unique = true))
     private Pedido pedido;
 
     @Lob

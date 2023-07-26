@@ -39,7 +39,7 @@ public class EstrategiaChavePrimariaTest extends EntityManagerTest {
     @Test
     public void testarEstrategiaTableEmEstoque(){
         Estoque estoque = new Estoque();
-        estoque.setQuatidade(10);
+        estoque.setQuantidade(10);
 
         entityManager.getTransaction().begin();
         entityManager.persist(estoque);

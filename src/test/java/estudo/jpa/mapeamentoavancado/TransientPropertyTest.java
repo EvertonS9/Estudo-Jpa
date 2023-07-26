@@ -11,6 +11,6 @@ public class TransientPropertyTest extends EntityManagerTest {
     public void validateFirstName() {
         Cliente cliente = entityManager.find(Cliente.class, 2);
 
-        Assert.assertEquals("Vitoria", cliente.getFirstName());
+        Assert.assertEquals("Vitoria", cliente.getPrimeiroNome());
     }
 }
