@@ -12,7 +12,7 @@ public class InheritanceTest extends EntityManagerTest {
     @Test
     public void saveClient(){
         Cliente cliente = new Cliente();
-        cliente.setNome("Kushida");
+        cliente.setNome("Kushida Sakamoto");
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);
