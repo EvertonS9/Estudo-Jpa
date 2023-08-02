@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class OperacaoComTransacaoTest extends EntityManagerTest {
 
@@ -33,6 +34,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
         produtoPersist.setNome("Shun");
         produtoPersist.setDescricao("Corrente de Andrômeda!");
         produtoPersist.setPreco(new BigDecimal(13000));
+        produtoPersist.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         entityManager.persist(produtoPersist);
@@ -52,6 +54,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
         produtoMerge.setNome("Shiryu");
         produtoMerge.setDescricao("Cólera do Dragão!");
         produtoMerge.setPreco(new BigDecimal(14000));
+        produtoMerge.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         produtoMerge = entityManager.merge(produtoMerge);
@@ -73,6 +76,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
         produto.setNome("Ikki");
         produto.setDescricao("Avê Fenix!");
         produto.setPreco(new BigDecimal(12000));
+        produto.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         Produto produtoSalvo = entityManager.merge(produto);
@@ -105,6 +109,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
         produto.setNome("Kindle Paperwhite");
         produto.setDescricao("Novo Kindle!");
         produto.setPreco(new BigDecimal(599));
+        produto.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         Produto produtoSalvo = entityManager.merge(produto);
@@ -137,6 +142,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
         produto.setNome("Cavaleiro de ouro");
         produto.setDescricao("Guardiões das doze casas");
         produto.setPreco(new BigDecimal(8001));
+        produto.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         entityManager.persist(produto);
