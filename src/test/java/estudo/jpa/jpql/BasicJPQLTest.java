@@ -1,6 +1,7 @@
 package estudo.jpa.jpql;
 
 import estudo.jpa.EntityManagerTest;
+import estudo.jpa.model.Cliente;
 import estudo.jpa.model.Pedido;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,6 +11,20 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class BasicJPQLTest extends EntityManagerTest {
+
+    @Test
+    public void selecionarUmAtributoParaRetorno() {
+        String jpql = "select p.nome from Produto p";
+
+        TypedQuery<String> typedQuery = entityManager.createQuery(jpql, String.class);
+        List<String> lista = typedQuery.getResultList();
+        Assert.assertTrue(String.class.equals(lista.get(0).getClass()));
+
+        String jpqlCliente = "select p.cliente from Pedido p";
+        TypedQuery<Cliente> typedQueryCliente = entityManager.createQuery(jpqlCliente, Cliente.class);
+        List<Cliente> listaClientes = typedQueryCliente.getResultList();
+        Assert.assertTrue(Cliente.class.equals(listaClientes.get(0).getClass()));
+    }
 
     @Test
     public void buscarPorIdentificador() {
