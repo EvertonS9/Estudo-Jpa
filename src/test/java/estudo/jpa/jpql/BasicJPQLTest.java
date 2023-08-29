@@ -1,5 +1,6 @@
 package estudo.jpa.jpql;
 
+import dto.ProdutoDTO;
 import estudo.jpa.EntityManagerTest;
 import estudo.jpa.model.Cliente;
 import estudo.jpa.model.Pedido;
@@ -12,6 +13,16 @@ import java.util.List;
 
 public class BasicJPQLTest extends EntityManagerTest {
 
+    @Test
+    public void projetarNoDTO() {
+        String jpql = "select new dto.ProdutoDTO(id, nome) from Produto";
+
+        TypedQuery<ProdutoDTO> typedQuery = entityManager.createQuery(jpql, ProdutoDTO.class);
+        List<ProdutoDTO> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(p -> System.out.println(p.getId() + ", " + p.getNome()));
+    }
     @Test
     public void projetarOResultado() {
         String jpql = "select id, nome from Produto";
