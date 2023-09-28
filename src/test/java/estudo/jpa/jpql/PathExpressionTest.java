@@ -20,7 +20,6 @@ public class PathExpressionTest extends EntityManagerTest {
         Assert.assertTrue(lista.size() == 2);
     }
 
-
     @Test
     public void usarPathExpressions() {
         String jpql = "select p.cliente.nome from Pedido p";
