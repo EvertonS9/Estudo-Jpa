@@ -1,14 +1,28 @@
 package estudo.jpa.jpql;
 
 import estudo.jpa.EntityManagerTest;
+import estudo.jpa.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
 import javax.persistence.TypedQuery;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
 
+    @Test
+    public void usarMaiorMenor() {
+        String jpql = "select p from Produto p " +
+                " where p.preco >= :precoInicial and p.preco <= :precoFinal";
+
+        TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
+        typedQuery.setParameter("precoInicial", new BigDecimal(400));
+        typedQuery.setParameter("precoFinal", new BigDecimal(5800));
+
+        List<Produto> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+    }
     @Test
     public void usarIsNull() {
         String jpql = "select p from Produto p where p.foto is null";
