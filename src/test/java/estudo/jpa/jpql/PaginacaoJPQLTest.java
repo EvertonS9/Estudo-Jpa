@@ -18,7 +18,7 @@ public class PaginacaoJPQLTest extends EntityManagerTest {
 
         // FIRST_RESULT = MAX_RESULTS * (pagina - 1) formula
         //typedQuery.setFirstResult(5);
-        typedQuery.setMaxResults(3);             //setMaxResults() limita a quantidade maxima de resultados
+        typedQuery.setMaxResults(3);             //setMaxResults() limita a quantidade maxima de registros retornados
 
         List<Categoria> lista = typedQuery.getResultList();
         Assert.assertFalse(lista.isEmpty());
