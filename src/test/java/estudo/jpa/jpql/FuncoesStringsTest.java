@@ -10,7 +10,7 @@ import java.util.List;
 public class FuncoesStringsTest extends EntityManagerTest {
 
     @Test
-    public void aplicarFuncao() {
+    public void aplicarFuncaoString() {
         // concat, length, locate, substring, lower, upper, trim
 
         String jpql = "select c.nome, length(c.nome) from Categoria c " +
