@@ -7,7 +7,7 @@ import org.junit.Test;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class FuncoesNumero extends EntityManagerTest {
+public class FuncoesNumerosTest extends EntityManagerTest {
 
     @Test
     public void aplicarFuncaoNumero(){
