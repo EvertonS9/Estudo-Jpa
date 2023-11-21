@@ -1,4 +1,4 @@
-package estudo.jpa.jpql;
+package estudo.jpa.jpql.funcoes;
 
 import estudo.jpa.EntityManagerTest;
 import org.junit.Assert;
