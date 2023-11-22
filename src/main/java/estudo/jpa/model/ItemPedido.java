@@ -18,13 +18,15 @@ public class ItemPedido {
     private ItemPedidoId id;
 
     @MapsId("pedidoId")
-    @ManyToOne(optional = false)//, cascade = CascadeType.REMOVE)//, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "pedido_id", foreignKey = @ForeignKey(name = "fk_item_pedido_pedido"))
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "pedido_id", nullable = false, //, cascade = CascadeType.REMOVE)//, cascade = CascadeType.MERGE)
+            foreignKey = @ForeignKey(name = "fk_item_pedido_pedido"))
     private Pedido pedido;
 
     @MapsId("produtoId")
     @ManyToOne(optional = false)
-    @JoinColumn(name = "produto_id", foreignKey = @ForeignKey(name = "fk_item_pedido_produto"))
+    @JoinColumn(name = "produto_id", nullable = false,
+            foreignKey = @ForeignKey(name = "fk_item_pedido_produto"))
     private Produto produto;
 
     @Column(name = "preco_produto", nullable = false)

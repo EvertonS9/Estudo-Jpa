@@ -34,4 +34,4 @@ alter table produto_categoria add constraint fk_produto_categoria_categoria fore
 alter table produto_categoria add constraint fk_produto_categoria_produto foreign key (produto_id) references produto (id);
 alter table produto_tag add constraint fk_produto_tag_produto foreign key (produto_id) references produto (id);
 
-create function acima_media_faturamento(valor double) returns boolean reads sql data return valor > (select avg(total) from pedido);
+--create function acima_media_faturamento(valor double) returns boolean reads sql data return valor > (select avg(total) from pedido);
